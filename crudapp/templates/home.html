@@ -1,0 +1,57 @@
+
+<!doctype html>
+
+
+ 
+ <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  
+  <body>
+   
+    {%include 'nav.html'%} 
+    <div class="card">
+        <div class="card-body">
+           <form action="" method="POST">
+            
+                
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" id="btnn" class="btn btn-primary">SUBMIT</button>
+            
+
+           </form>
+           
+        </div>
+    </div>
+    
+   <script>
+        $(document).ready(function(){ 
+          $('#btnn').on('click',function(){
+              id=$('#id_Emp_ser').val()
+              name=$('#id_NAME').val()
+              desg=$('#id_DESGN').val()
+              exp=$('#id_Qualification').val()
+              
+              $.ajax({
+                url:"",
+                type:"POST",
+                data:{
+                  id:id,
+                  name:name,
+                  desg:desg,
+                  exp:exp,
+                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                },
+               
+              });
+              
+
+          });
+      });
+
+    </script>
+    
+    
+   
+  </body>
+</html>
